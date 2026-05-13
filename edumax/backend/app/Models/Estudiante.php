@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasInstitucionScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,11 +11,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Estudiante extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, HasInstitucionScope;
 
     protected $table = 'estudiantes';
 
     protected $fillable = [
+        'institucion_id',
         'user_id',
         'padre_id',
         'codigo_estudiante',

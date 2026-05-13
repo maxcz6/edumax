@@ -1,0 +1,2 @@
+solo se permite agregar documetos en C:\Users\SAM\Documents\max\edumax\docs\docsavances ,no se permite modificar nada de C:\Users\SAM\Documents\max\edumax\docs\ exepto C:\Users\SAM\Documents\max\edumax\docs\docsavances
+actua como senior y crea y verifica segun tus reglas absolutas de docs teniendo en cuenta que sea funcional con el frontend o backend y luego coloca lo que modificaste en un archivo.md con v1,v2,v3 segun corresponda  en  \edumax\docs\docsavances/

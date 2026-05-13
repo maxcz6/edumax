@@ -439,3 +439,11 @@ El sistema puede funcionar como:
 * SaaS multiinstitución
 * Sistema individual por colegio
 * Plataforma educativa tipo Moodle simplificada
+
+
+Nucleo principal :estudiantes, docentes, cursos, grados, secciones, matriculas, notas, asistencias y tareas cubren todo el ciclo académico. La tabla asistencias usa un enum presente/tardanza/falta/justificado que ya anticipa el reporte detallado para la UGEL. La tabla notificaciones tiene el campo tipo enum('sistema','whatsapp','sms','correo'), lo que significa que la comunicación multicanal ya está modelada. Para el acceso remoto / PWA, existe cache, cache_locks, sessions y un sistema de jobs/job_batches que habilita sincronización asíncrona, clave para zonas con internet limitado. El sistema de roles/permisos de Spatie (roles, permissions, model_has_roles) permite diferenciar entre director, docente, padre y alumno sin problema.
+
+8 entidades principales organizadas en tres capas:
+Capa 1 — raíz: Institución es el ancla de todo. Cada registro en el sistema lleva institucion_id, lo que permite que múltiples colegios convivan en la misma base de datos sin mezclarse.
+Capa 2 — actores: Son las personas del sistema. Docente, Estudiante y Padre no son tablas independientes — todas extienden a users, que centraliza nombre, email, teléfono y autenticación. La relación padre → estudiante permite que un padre vea directamente los datos de su hijo.
+Capa 3 — proceso académico: Aquí ocurre el trabajo diario. Grado/Sección define la estructura del colegio. Curso conecta un docente con un grado. Matrícula inscribe a un estudiante en un curso y sección para un año escolar. Asistencia y Nota registran el desempeño día a día. Tarea cierra el ciclo con entregas y calificaciones.

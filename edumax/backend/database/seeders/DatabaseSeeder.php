@@ -204,12 +204,8 @@ class DatabaseSeeder extends Seeder
                 ['user_id' => $estudianteUser->id],
                 [
                     'padre_id' => $padreAsignado->id,
-                    'codigo_estudiante' => "EST{$i:06d}",
-                    'dni' => "1234567{$i:02d}",
-                    'fecha_nacimiento' => now()->subYears(15),
-                    'genero' => $i % 2 == 0 ? 'M' : 'F',
-                    'direccion' => "Calle {$i}, Lima",
-                    'estado' => 'activo',
+                        'codigo_estudiante' => sprintf('EST%06d', $i),
+                        'dni' => sprintf('1234567%02d', $i),
                 ]
             );
 
